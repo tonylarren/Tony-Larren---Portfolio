@@ -29,7 +29,7 @@ const Hero = () => {
       const { data } = await supabase
         .from('profiles')
         .select('name, title, description, description_en, description_fr, cv_en, cv_fr')
-        .single();
+        .maybeSingle();
 
       if (data) {
         setProfile(data);

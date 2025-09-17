@@ -28,7 +28,7 @@ const About = () => {
       const { data } = await supabase
         .from('profiles')
         .select('name, description, description_en, description_fr, years_experience, projects_count, profile_image')
-        .single();
+        .maybeSingle();
 
       if (data) {
         setProfile(data);
