@@ -22,7 +22,8 @@ import { toast } from '@/hooks/use-toast';
 interface ProfileFormData {
   name: string;
   title: string;
-  description: string;
+  short_bio_en: string;
+  short_bio_fr: string;
   description_en: string;
   description_fr: string;
   about: string;
@@ -40,7 +41,8 @@ const AdminProfile = () => {
   const [formData, setFormData] = useState<ProfileFormData>({
     name: '',
     title: '',
-    description: '',
+    short_bio_en: '',
+    short_bio_fr: '',
     description_en: '',
     description_fr: '',
     about: '',
@@ -84,9 +86,10 @@ const AdminProfile = () => {
         setFormData({
           name: data.name || '',
           title: data.title || '',
-          description: data.description || '',
-          description_en: data.description_en || data.description || '',
-          description_fr: data.description_fr || data.description || '',
+          short_bio_en: data.short_bio_en || '',
+          short_bio_fr: data.short_bio_fr || '',
+          description_en: data.description_en || '',
+          description_fr: data.description_fr || '',
           about: data.about || '',
           years_experience: data.years_experience || 0,
           projects_count: data.projects_count || 0,
@@ -176,8 +179,8 @@ const AdminProfile = () => {
     setIsLoading(true);
     setError('');
 
-    if (!formData.name.trim() || !formData.description.trim()) {
-      setError('Name and description are required');
+    if (!formData.name.trim() || !formData.short_bio_en.trim()) {
+      setError('Name and short bio (English) are required');
       setIsLoading(false);
       return;
     }
@@ -186,7 +189,8 @@ const AdminProfile = () => {
       const profileData = {
         name: formData.name.trim(),
         title: formData.title.trim(),
-        description: formData.description.trim(),
+        short_bio_en: formData.short_bio_en.trim(),
+        short_bio_fr: formData.short_bio_fr.trim(),
         description_en: formData.description_en.trim(),
         description_fr: formData.description_fr.trim(),
         about: formData.about.trim(),
@@ -336,16 +340,28 @@ const AdminProfile = () => {
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="description">Short Bio (Fallback) *</Label>
-                <Textarea
-                  id="description"
-                  value={formData.description}
-                  onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                  placeholder="Brief description (used as fallback)"
-                  rows={2}
-                  required
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="short_bio_en">Short Bio (English) *</Label>
+                  <Textarea
+                    id="short_bio_en"
+                    value={formData.short_bio_en}
+                    onChange={(e) => setFormData(prev => ({ ...prev, short_bio_en: e.target.value }))}
+                    placeholder="Brief description for hero section (English)"
+                    rows={2}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="short_bio_fr">Short Bio (French)</Label>
+                  <Textarea
+                    id="short_bio_fr"
+                    value={formData.short_bio_fr}
+                    onChange={(e) => setFormData(prev => ({ ...prev, short_bio_fr: e.target.value }))}
+                    placeholder="Brève description pour la section héros (français)"
+                    rows={2}
+                  />
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

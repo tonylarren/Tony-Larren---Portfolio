@@ -20,13 +20,14 @@ export type Database = {
           created_at: string
           cv_en: string | null
           cv_fr: string | null
-          description: string
           description_en: string | null
           description_fr: string | null
           id: string
           name: string
           profile_image: string | null
           projects_count: number
+          short_bio_en: string
+          short_bio_fr: string | null
           title: string | null
           updated_at: string
           user_id: string
@@ -37,13 +38,14 @@ export type Database = {
           created_at?: string
           cv_en?: string | null
           cv_fr?: string | null
-          description?: string
           description_en?: string | null
           description_fr?: string | null
           id?: string
           name?: string
           profile_image?: string | null
           projects_count?: number
+          short_bio_en?: string
+          short_bio_fr?: string | null
           title?: string | null
           updated_at?: string
           user_id: string
@@ -54,13 +56,14 @@ export type Database = {
           created_at?: string
           cv_en?: string | null
           cv_fr?: string | null
-          description?: string
           description_en?: string | null
           description_fr?: string | null
           id?: string
           name?: string
           profile_image?: string | null
           projects_count?: number
+          short_bio_en?: string
+          short_bio_fr?: string | null
           title?: string | null
           updated_at?: string
           user_id?: string

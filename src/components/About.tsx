@@ -6,7 +6,6 @@ import { supabase } from '@/integrations/supabase/client';
 
 interface ProfileData {
   name: string;
-  description: string;
   description_en?: string;
   description_fr?: string;
   years_experience: number;
@@ -27,7 +26,7 @@ const About = () => {
     try {
       const { data } = await supabase
         .from('profiles')
-        .select('name, description, description_en, description_fr, years_experience, projects_count, profile_image')
+        .select('name, description_en, description_fr, years_experience, projects_count, profile_image')
         .maybeSingle();
 
       if (data) {
@@ -74,9 +73,9 @@ const About = () => {
             {/* About Content */}
             <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                {language === 'fr' 
-                  ? (profile?.description_fr || profile?.description || t('about.description'))
-                  : (profile?.description_en || profile?.description || t('about.description'))
+                {language === 'fr'
+                  ? (profile?.description_fr || t('about.description'))
+                  : (profile?.description_en || t('about.description'))
                 }
               </p>
 

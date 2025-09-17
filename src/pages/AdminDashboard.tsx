@@ -10,7 +10,8 @@ import { toast } from '@/hooks/use-toast';
 interface Profile {
   id: string;
   name: string;
-  description: string;
+  short_bio_en: string;
+  short_bio_fr: string;
   years_experience: number;
   projects_count: number;
   profile_image: string | null;

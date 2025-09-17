@@ -7,9 +7,8 @@ import { supabase } from '@/integrations/supabase/client';
 interface Profile {
   name: string;
   title?: string;
-  description: string;
-  description_en?: string;
-  description_fr?: string;
+  short_bio_en?: string;
+  short_bio_fr?: string;
   cv_en?: string;
   cv_fr?: string;
 }
@@ -28,7 +27,7 @@ const Hero = () => {
     try {
       const { data } = await supabase
         .from('profiles')
-        .select('name, title, description, description_en, description_fr, cv_en, cv_fr')
+        .select('name, title, short_bio_en, short_bio_fr, cv_en, cv_fr')
         .maybeSingle();
 
       if (data) {
@@ -73,8 +72,8 @@ const Hero = () => {
           
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
             {language === 'fr' 
-              ? (profile?.description_fr || profile?.description || t('hero.description'))
-              : (profile?.description_en || profile?.description || t('hero.description'))
+              ? (profile?.short_bio_fr || profile?.short_bio_en || t('hero.description'))
+              : (profile?.short_bio_en || t('hero.description'))
             }
           </p>
           
