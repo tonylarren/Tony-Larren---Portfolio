@@ -83,10 +83,16 @@ const About = () => {
               <div className="grid grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-2">
-                    {profile?.years_experience || 3}+
+                    {profile?.years_experience === 0 
+                      ? (language === 'fr' ? '<1' : '<1')
+                      : `${profile?.years_experience || 3}+`
+                    }
                   </div>
                   <div className="text-sm text-muted-foreground">
-                    {t('about.experience')}
+                    {profile?.years_experience === 0
+                      ? (language === 'fr' ? 'an d\'expérience' : 'year experience')
+                      : t('about.experience')
+                    }
                   </div>
                 </div>
                 <div className="text-center">
