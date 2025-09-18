@@ -74,33 +74,33 @@ const Skills = () => {
             </p>
           </div>
   
-          {/* Grid of All Skills */}
+          {/* Simple Grid - 2 rows max */}
           {skills.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">No skills added yet.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
-              {skills.map((skill, index) => (
+            <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-6 max-w-6xl mx-auto">
+              {skills.slice(0, 24).map((skill, index) => (
                 <div
                   key={skill.id}
-                  className={`group flex flex-col items-center p-4 rounded-xl bg-primary-light hover:bg-primary transition-all duration-300 cursor-default ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className={`group flex flex-col items-center p-3 rounded-xl bg-primary-light hover:bg-primary transition-all duration-300 cursor-default ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                  style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   {skill.logo_url ? (
                     <img 
                       src={skill.logo_url} 
                       alt={skill.name}
-                      className="w-10 h-10 object-contain mb-2 transition-all duration-300 group-hover:brightness-0 group-hover:invert"
+                      className="w-8 h-8 object-contain mb-2 transition-all duration-300 group-hover:brightness-0 group-hover:invert"
                     />
                   ) : (
-                    <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center mb-2 transition-colors duration-300 group-hover:bg-white/20">
-                      <span className="text-primary group-hover:text-white font-bold text-xs">
+                    <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center mb-2 transition-colors duration-300 group-hover:bg-white/20">
+                      <span className="text-primary group-hover:text-white font-bold text-[10px]">
                         {skill.name.slice(0, 2).toUpperCase()}
                       </span>
                     </div>
                   )}
-                  <span className="text-sm font-medium text-primary group-hover:text-white text-center leading-tight">
+                  <span className="text-xs font-medium text-primary group-hover:text-white text-center leading-tight">
                     {skill.name}
                   </span>
                 </div>
