@@ -64,19 +64,19 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
+      label: t('contact.info.email'),
       value: 'larrentony@gmail.com',
       href: 'mailto:larrentony@gmail.com',
     },
     {
       icon: Phone,
-      label: 'Phone',
+      label: t('contact.info.phone'),
       value: '+261 34 46 164 10',
       href: '#',
     },
     {
       icon: MapPin,
-      label: 'Location',
+      label: t('contact.info.location'),
       value: 'Antananarivo, Madagascar',
       href: 'https://www.google.com/maps?q=Antananarivo,+Madagascar',
     },
@@ -177,7 +177,7 @@ const Contact = () => {
               {/* Contact Details */}
               <div className="mb-8">
                 <h3 className="text-2xl font-semibold mb-6 text-foreground">
-                  Contact Information
+                  {t('contact.info.title')}
                 </h3>
                 <div className="space-y-4">
                   {contactInfo.map((info) => (
@@ -200,7 +200,7 @@ const Contact = () => {
               {/* Social Links */}
               <div>
                 <h3 className="text-2xl font-semibold mb-6 text-foreground">
-                  Follow Me
+                  {t('contact.social.title')}
                 </h3>
                 <div className="flex space-x-4">
                   {socialLinks.map((social) => (

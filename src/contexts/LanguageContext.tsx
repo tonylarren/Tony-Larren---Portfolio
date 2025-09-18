@@ -53,6 +53,11 @@ const translations = {
     // Contact Section
     'contact.title': 'Get In Touch',
     'contact.description': 'Let\'s discuss your next project. I\'m always interested in new opportunities.',
+    'contact.info.title': 'Contact Information',
+    'contact.info.email': 'Email',
+    'contact.info.phone': 'Phone',
+    'contact.info.location': 'Location',
+    'contact.social.title': 'Follow Me',
     'contact.form.name': 'Your Name',
     'contact.form.email': 'Your Email',
     'contact.form.message': 'Your Message',
@@ -106,6 +111,11 @@ const translations = {
     // Contact Section
     'contact.title': 'Prenons Contact',
     'contact.description': 'Discutons de votre prochain projet. Je suis toujours intéressé par de nouvelles opportunités.',
+    'contact.info.title': 'Informations de Contact',
+    'contact.info.email': 'Email',
+    'contact.info.phone': 'Téléphone',
+    'contact.info.location': 'Localisation',
+    'contact.social.title': 'Suivez-moi',
     'contact.form.name': 'Votre Nom',
     'contact.form.email': 'Votre Email',
     'contact.form.message': 'Votre Message',
