@@ -15,11 +15,11 @@ const Footer = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/johndeveloper',
+      href: '#',
     },
     {
       icon: Mail,
-      label: 'Email',  
+      label: 'Email',
       href: 'mailto:larrentony@gmail.com',
     },
   ];
@@ -98,15 +98,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-muted-foreground text-sm mb-4 md:mb-0">
+        <div className="border-t border-border mt-8 pt-8 flex justify-center items-center">
+          <p className="text-muted-foreground text-sm">
             © {currentYear} Tony Larren. {t('footer.rights')}
           </p>
-          <p className="text-muted-foreground text-sm flex items-center">
-            {t('footer.builtWith')}
-            <Heart className="w-4 h-4 mx-1 text-red-500" />
-          </p>
         </div>
+
       </div>
     </footer>
   );

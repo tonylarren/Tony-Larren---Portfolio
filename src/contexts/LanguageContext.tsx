@@ -21,14 +21,14 @@ const translations = {
     
     // Hero Section
     'hero.name': 'Tony Larren',
-    'hero.tagline': 'Web & Mobile Developer',
-    'hero.description': 'Passionate about creating beautiful, functional, and user-friendly digital experiences. Specializing in modern web and mobile applications.',
+    'hero.tagline': 'Software developer - Ai/Data Enthusiast',
+    'hero.description': 'Software developer specializing in creating applications and exploring AI/data solutions.',
     'hero.cta': 'View Projects',
     'hero.downloadCV': 'Download CV',
     
     // About Section
     'about.title': 'About Me',
-    'about.description': 'I\'m a passionate full-stack developer with 5+ years of experience creating digital solutions. I love turning complex problems into simple, beautiful designs. When I\'m not coding, you\'ll find me exploring new technologies and contributing to open-source projects.',
+    'about.description': 'I\'m a developer specializing in modern web and mobile applications, with a passion for leveraging artificial intelligence to create better user experiences. I\'m always eager to learn new tools and technologies to expand my skill set.',
     'about.experience': 'Years of Experience',
     'about.projects': 'Projects Completed',
     'about.clients': 'Happy Clients',
@@ -79,14 +79,14 @@ const translations = {
     
     // Hero Section
     'hero.name': 'Tony Larren',
-    'hero.tagline': 'Développeur Web & Mobile',
-    'hero.description': 'Passionné par la création d\'expériences numériques belles, fonctionnelles et conviviales. Spécialisé dans les applications web et mobiles modernes.',
+    'hero.tagline': 'Software developer - Ai/Data Enthusiast',
+    'hero.description': 'Développeur logiciel spécialisé dans la création d\'applications et l\'exploration de solutions IA/data.',
     'hero.cta': 'Voir les Projets',
     'hero.downloadCV': 'Télécharger CV',
     
     // About Section
     'about.title': 'À Propos de Moi',
-    'about.description': 'Je suis un développeur full-stack passionné avec plus de 5 ans d\'expérience dans la création de solutions numériques. J\'aime transformer des problèmes complexes en designs simples et beaux. Quand je ne code pas, vous me trouverez en train d\'explorer de nouvelles technologies et de contribuer à des projets open-source.',
+    'about.description': 'Je suis développeur spécialisé dans les applications web et mobiles modernes, passionné par l\'intelligence artificielle pour créer de meilleures expériences utilisateur. Je suis toujours avide d\'apprendre de nouveaux outils et technologies pour approfondir mes compétences.',
     'about.experience': 'Années d\'Expérience',
     'about.projects': 'Projets Réalisés',
     'about.clients': 'Clients Satisfaits',

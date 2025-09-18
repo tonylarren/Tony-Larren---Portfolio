@@ -91,7 +91,7 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/johndeveloper',
+      href: '#',
     },
     {
       icon: Mail,

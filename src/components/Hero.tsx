@@ -53,7 +53,7 @@ const Hero = () => {
       console.log('CV not available for selected language');
     }
   };
-  */
+  *
   const handleDownloadCV = () => {
     const cvUrl = language === 'fr' ? profile?.cv_fr : profile?.cv_en;
     if (cvUrl) {
@@ -66,6 +66,34 @@ const Hero = () => {
       document.body.removeChild(link);
     } else {
       console.log('CV not available for selected language');
+    }
+  };
+  */
+  const handleDownloadCV = async () => {
+    const cvUrl = language === 'fr' ? profile?.cv_fr : profile?.cv_en;
+    if (!cvUrl) {
+      console.log('CV not available for selected language');
+      return;
+    }
+  
+    try {
+      const response = await fetch(cvUrl);
+      if (!response.ok) throw new Error('Network response was not ok');
+  
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+  
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = language === 'fr' ? 'CV_Tony_Larren_FR.pdf' : 'CV_Tony_Larren_EN.pdf';
+      document.body.appendChild(link);
+      link.click();
+  
+      // Clean up
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Failed to download CV:', error);
     }
   };
   

@@ -80,21 +80,20 @@ const About = () => {
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 gap-6 justify-items-center">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-2">
-                    {profile?.years_experience === 0 
+                    {profile?.years_experience === 0
                       ? (language === 'fr' ? '<1' : '<1')
-                      : `${profile?.years_experience || 3}+`
-                    }
+                      : `${profile?.years_experience || 3}+`}
                   </div>
                   <div className="text-sm text-muted-foreground">
                     {profile?.years_experience === 0
-                      ? (language === 'fr' ? 'an d\'expérience' : 'year experience')
-                      : t('about.experience')
-                    }
+                      ? (language === 'fr' ? "an d'expérience" : 'year experience')
+                      : t('about.experience')}
                   </div>
                 </div>
+
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-2">
                     {profile?.projects_count || 12}+
@@ -103,13 +102,8 @@ const About = () => {
                     {t('about.projects')}
                   </div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">50+</div>
-                  <div className="text-sm text-muted-foreground">
-                    {t('about.clients')}
-                  </div>
-                </div>
               </div>
+
             </div>
           </div>
         </div>
