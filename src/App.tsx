@@ -14,6 +14,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminProjects from "./pages/AdminProjects";
 import AdminProjectForm from "./pages/AdminProjectForm";
 import AdminProfile from "./pages/AdminProfile";
+import AdminSkills from "./pages/AdminSkills";
 
 const queryClient = new QueryClient();
 
@@ -31,10 +32,11 @@ const App = () => (
                 <Route path="/project/:id" element={<ProjectDetail />} />
                 <Route path="/admin" element={<AdminAuth />} />
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
-                <Route path="/admin/projects" element={<AdminProjects />} />
-                <Route path="/admin/projects/new" element={<AdminProjectForm />} />
-                <Route path="/admin/projects/edit/:id" element={<AdminProjectForm />} />
-                <Route path="/admin/profile" element={<AdminProfile />} />
+          <Route path="/admin/projects" element={<AdminProjects />} />
+          <Route path="/admin/projects/new" element={<AdminProjectForm />} />
+          <Route path="/admin/projects/edit/:id" element={<AdminProjectForm />} />
+          <Route path="/admin/profile" element={<AdminProfile />} />
+          <Route path="/admin/skills" element={<AdminSkills />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
