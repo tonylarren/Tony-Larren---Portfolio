@@ -174,7 +174,7 @@ const AdminDashboard = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
               <CardTitle>Project Management</CardTitle>
@@ -222,24 +222,6 @@ const AdminDashboard = () => {
                 className="w-full"
               >
                 View Live Portfolio
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Skills Management</CardTitle>
-              <CardDescription>
-                Add, edit, and manage your skills and technologies with custom logos.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <Button 
-                onClick={() => navigate('/admin/skills')} 
-                className="w-full"
-              >
-                <Settings className="h-4 w-4 mr-2" />
-                Manage Skills
               </Button>
             </CardContent>
           </Card>
