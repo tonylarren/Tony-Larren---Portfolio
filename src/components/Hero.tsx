@@ -44,7 +44,7 @@ const Hero = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
+  /*
   const handleDownloadCV = () => {
     const cvUrl = language === 'fr' ? profile?.cv_fr : profile?.cv_en;
     if (cvUrl) {
@@ -53,6 +53,22 @@ const Hero = () => {
       console.log('CV not available for selected language');
     }
   };
+  */
+  const handleDownloadCV = () => {
+    const cvUrl = language === 'fr' ? profile?.cv_fr : profile?.cv_en;
+    if (cvUrl) {
+      const link = document.createElement('a');
+      link.href = cvUrl;
+      // Optional: set a filename for the download
+      link.download = language === 'fr' ? 'CV_Tony_Larren_FR.pdf' : 'CV_Tony_Larren_EN.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      console.log('CV not available for selected language');
+    }
+  };
+  
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -63,7 +79,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground">
-            {profile?.name || t('hero.name')}
+           Tony Larren
           </h1>
           
           <p className="text-xl md:text-2xl text-primary font-semibold mb-4">
