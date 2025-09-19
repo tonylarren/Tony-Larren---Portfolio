@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -24,6 +24,25 @@ interface Project {
   about_project_fr?: string;
   is_visible: boolean;
 }
+
+// Skeleton component for loading state
+const ProjectSkeleton = () => (
+  <Card className="overflow-hidden">
+    <div className="w-full h-48 bg-muted animate-pulse rounded-md"></div>
+    <CardContent className="p-6">
+      <div className="h-6 bg-muted rounded animate-pulse mb-2 w-3/4"></div>
+      <div className="h-4 bg-muted rounded animate-pulse mb-4 w-5/6"></div>
+      <div className="flex gap-2 mb-4">
+        <div className="h-6 w-16 bg-muted rounded animate-pulse"></div>
+        <div className="h-6 w-20 bg-muted rounded animate-pulse"></div>
+      </div>
+      <div className="flex gap-3">
+        <div className="h-8 bg-muted rounded animate-pulse flex-1"></div>
+        <div className="h-8 bg-muted rounded animate-pulse flex-1"></div>
+      </div>
+    </CardContent>
+  </Card>
+);
 
 const Projects = () => {
   const { t, language } = useLanguage();
@@ -67,37 +86,15 @@ const Projects = () => {
             </p>
           </div>
 
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-2 md:-ml-4">
               {loading ? (
-                // Loading state
-                [1, 2, 3].map((index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                    <Card className="overflow-hidden">
-                      <div className="w-full h-48 bg-muted animate-pulse"></div>
-                      <CardContent className="p-6">
-                        <div className="h-6 bg-muted rounded animate-pulse mb-2"></div>
-                        <div className="h-4 bg-muted rounded animate-pulse mb-4"></div>
-                        <div className="flex gap-2 mb-4">
-                          <div className="h-6 w-16 bg-muted rounded animate-pulse"></div>
-                          <div className="h-6 w-20 bg-muted rounded animate-pulse"></div>
-                        </div>
-                        <div className="flex gap-3">
-                          <div className="h-8 bg-muted rounded animate-pulse flex-1"></div>
-                          <div className="h-8 bg-muted rounded animate-pulse flex-1"></div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                [1, 2, 3].map((i) => (
+                  <CarouselItem key={i} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                    <ProjectSkeleton />
                   </CarouselItem>
                 ))
               ) : projects.length === 0 ? (
-                // No projects state
                 <CarouselItem className="pl-2 md:pl-4 basis-full">
                   <Card className="text-center p-8">
                     <CardContent>
@@ -106,7 +103,6 @@ const Projects = () => {
                   </Card>
                 </CarouselItem>
               ) : (
-                // Projects list
                 projects.map((project, index) => (
                   <CarouselItem key={project.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link to={`/project/${project.id}`}>
@@ -123,7 +119,7 @@ const Projects = () => {
                           />
                           <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        
+
                         <CardContent className="p-6">
                           <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
                             {project.title}
@@ -134,7 +130,7 @@ const Projects = () => {
                               : (project.description_en || project.description)
                             }
                           </p>
-                          
+
                           {/* Tags */}
                           {project.technologies && project.technologies.length > 0 && (
                             <div className="flex flex-wrap gap-2 mb-4">
@@ -148,7 +144,7 @@ const Projects = () => {
                               ))}
                             </div>
                           )}
-                          
+
                           {/* Buttons */}
                           <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
                             {project.live_demo_link && (

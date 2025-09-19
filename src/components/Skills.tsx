@@ -52,7 +52,7 @@ const Skills = () => {
       icon: Smartphone,
       color: 'from-purple-500 to-pink-500',
       skills: [
-        { name: 'Ionic', icon: SiIonic },
+        { name: 'Python', icon: SiPython },
 
       ]
     },
