@@ -23,6 +23,7 @@ interface Project {
   about_project_en?: string;
   about_project_fr?: string;
   is_visible: boolean;
+  is_under_development?: boolean;
 }
 
 // Skeleton component for loading state
@@ -107,9 +108,8 @@ const Projects = () => {
                   <CarouselItem key={project.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                     <Link to={`/project/${project.id}`}>
                       <Card
-                        className={`group overflow-hidden shadow-soft hover:shadow-card transition-all duration-500 delay-${index * 100} cursor-pointer ${
-                          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`}
+                        className={`group overflow-hidden shadow-soft hover:shadow-card transition-all duration-500 delay-${index * 100} cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                          }`}
                       >
                         <div className="relative overflow-hidden">
                           <img
@@ -125,7 +125,7 @@ const Projects = () => {
                             {project.title}
                           </h3>
                           <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                            {language === 'fr' 
+                            {language === 'fr'
                               ? (project.description_fr || project.description)
                               : (project.description_en || project.description)
                             }
@@ -146,35 +146,50 @@ const Projects = () => {
                           )}
 
                           {/* Buttons */}
+                          {/* Buttons */}
                           <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                            {project.live_demo_link && (
+                            {project.is_under_development ? (
                               <Button
                                 size="sm"
-                                className="flex-1 bg-primary hover:bg-primary-hover text-white"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  window.open(project.live_demo_link, '_blank');
-                                }}
+                                className="flex-1 bg-gray-400 text-white cursor-not-allowed"
+                                disabled
                               >
-                                <ExternalLink className="w-4 h-4 mr-2" />
-                                {t('projects.viewLive')}
+                                {t('projects.underDevelopment')}
                               </Button>
-                            )}
-                            {project.github_link && (
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                className="flex-1 border-primary text-primary hover:bg-primary hover:text-white"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  window.open(project.github_link, '_blank');
-                                }}
-                              >
-                                <Github className="w-4 h-4 mr-2" />
-                                {t('projects.viewCode')}
-                              </Button>
+                            ) : (
+                              <>
+                                {project.live_demo_link && (
+                                  <Button
+                                    size="sm"
+                                    className="flex-1 bg-primary hover:bg-primary-hover text-white"
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      window.open(project.live_demo_link, '_blank');
+                                    }}
+                                  >
+                                    <ExternalLink className="w-4 h-4 mr-2" />
+                                    {t('projects.viewLive')}
+                                  </Button>
+                                )}
+                                {project.github_link && (
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="flex-1 border-primary text-primary hover:bg-primary hover:text-white"
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      window.open(project.github_link, '_blank');
+                                    }}
+                                  >
+                                    <Github className="w-4 h-4 mr-2" />
+                                    {t('projects.viewCode')}
+                                  </Button>
+                                )}
+                              </>
                             )}
                           </div>
+
+                          {/* Buttons */}
                         </CardContent>
                       </Card>
                     </Link>

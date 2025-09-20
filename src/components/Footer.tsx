@@ -15,7 +15,7 @@ const Footer = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: '#',
+      href: 'https://www.linkedin.com/in/tony-larren/',
     },
     {
       icon: Mail,

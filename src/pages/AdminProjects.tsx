@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
 } from '@/components/ui/table';
 import {
   AlertDialog,
@@ -23,12 +23,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { 
-  ArrowLeft, 
-  Plus, 
-  Edit, 
-  Trash2, 
-  ExternalLink, 
+import {
+  ArrowLeft,
+  Plus,
+  Edit,
+  Trash2,
+  ExternalLink,
   Github,
   Loader2,
   Eye,
@@ -47,6 +47,8 @@ interface Project {
   github_link: string | null;
   created_at: string;
   is_visible: boolean;
+  is_under_development?: boolean;
+
 }
 
 const AdminProjects = () => {
@@ -145,7 +147,7 @@ const AdminProjects = () => {
           variant: "destructive"
         });
       } else {
-        setProjects(projects.map(p => 
+        setProjects(projects.map(p =>
           p.id === id ? { ...p, is_visible: !currentVisibility } : p
         ));
         toast({
@@ -164,6 +166,43 @@ const AdminProjects = () => {
     setTogglingId(null);
   };
 
+  const toggleDevelopmentStatus = async (id: string, currentStatus: boolean) => {
+    setTogglingId(id);
+    try {
+      const { error } = await supabase
+        .from('projects')
+        .update({ is_under_development: !currentStatus })
+        .eq('id', id)
+        .eq('user_id', user?.id);
+
+      if (error) {
+        console.error('Error updating development status:', error);
+        toast({
+          title: "Error",
+          description: "Failed to update project status",
+          variant: "destructive",
+        });
+      } else {
+        setProjects(projects.map(p =>
+          p.id === id ? { ...p, is_under_development: !currentStatus } : p
+        ));
+        toast({
+          title: "Success",
+          description: `Project is now ${!currentStatus ? 'under development' : 'live'}`,
+        });
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to update project status",
+        variant: "destructive",
+      });
+    }
+    setTogglingId(null);
+  };
+
+
   if (loading || loadingData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -178,9 +217,9 @@ const AdminProjects = () => {
       <header className="border-b bg-card">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-4 mb-2">
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => navigate('/admin/dashboard')}
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
@@ -243,6 +282,7 @@ const AdminProjects = () => {
                         <TableHead>Images</TableHead>
                         <TableHead>Links</TableHead>
                         <TableHead>Visibility</TableHead>
+                        <TableHead>Dev status</TableHead>
                         <TableHead>Created</TableHead>
                         <TableHead className="text-right">Actions</TableHead>
                       </TableRow>
@@ -312,6 +352,27 @@ const AdminProjects = () => {
                             </div>
                           </TableCell>
                           <TableCell>
+                            <div className="flex items-center space-x-2">
+                              <Switch
+                                checked={project.is_under_development}
+                                onCheckedChange={() => toggleDevelopmentStatus(project.id, project.is_under_development)}
+                                disabled={togglingId === project.id}
+                              />
+                              <div className="flex items-center">
+                                {project.is_under_development ? (
+                                  <Badge className="bg-yellow-200 text-yellow-800 px-2 py-0.5 rounded text-xs">
+                                    Under Dev
+                                  </Badge>
+                                ) : (
+                                  <Badge className="bg-green-200 text-green-800 px-2 py-0.5 rounded text-xs">
+                                    Live
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                          </TableCell>
+
+                          <TableCell>
                             {new Date(project.created_at).toLocaleDateString()}
                           </TableCell>
                           <TableCell className="text-right">
@@ -337,7 +398,7 @@ const AdminProjects = () => {
                                   <AlertDialogHeader>
                                     <AlertDialogTitle>Delete Project</AlertDialogTitle>
                                     <AlertDialogDescription>
-                                      Are you sure you want to delete "{project.title}"? 
+                                      Are you sure you want to delete "{project.title}"?
                                       This action cannot be undone.
                                     </AlertDialogDescription>
                                   </AlertDialogHeader>

@@ -42,6 +42,7 @@ const translations = {
     'projects.keyFeatures': 'Key Features',
     'projects.technologies': 'Technologies Used',
     'projects.techStack': 'Technical Stack',
+    'projects.underDevelopment':'Under Development',
     
     // Common
     'common.backToHome': 'Back to Home',
@@ -100,6 +101,7 @@ const translations = {
     'projects.keyFeatures': 'Fonctionnalités Clés',
     'projects.technologies': 'Technologies Utilisées',
     'projects.techStack': 'Stack Technique',
+    'projects.underDevelopment':'En Développement',
     
     // Common
     'common.backToHome': 'Retour à l\'Accueil',

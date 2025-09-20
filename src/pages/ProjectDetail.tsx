@@ -239,7 +239,7 @@ const ProjectDetail = () => {
               </CardContent>
             </Card>
 
-            {/* Tech Stack */}
+            {/* Tech Stack 
             {project.technologies && project.technologies.length > 0 && (
               <Card>
                 <CardContent className="p-6">
@@ -251,7 +251,7 @@ const ProjectDetail = () => {
                   </p>
                 </CardContent>
               </Card>
-            )}
+            )} */}
           </div>
         </div>
       </main>

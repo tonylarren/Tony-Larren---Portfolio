@@ -72,7 +72,7 @@ const Contact = () => {
       icon: Phone,
       label: t('contact.info.phone'),
       value: '+261 34 46 164 10',
-      href: '#',
+      
     },
     {
       icon: MapPin,
@@ -91,7 +91,7 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: '#',
+      href: 'https://www.linkedin.com/in/tony-larren/',
     },
     {
       icon: Mail,
