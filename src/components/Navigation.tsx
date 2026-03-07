@@ -39,13 +39,13 @@ const Navigation = () => {
       isScrolled ? 'nav-blur shadow-soft py-2' : 'py-4'
     }`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative">
           <div className="text-xl font-bold text-primary">
             TL
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 absolute left-1/2 -translate-x-1/2">
             {navItems.map((item) => (
               <button
                 key={item.key}
