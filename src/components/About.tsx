@@ -43,6 +43,14 @@ const About = () => {
     { key: 'about.clients', value: '25+' },
   ];
 
+  document.addEventListener("contextmenu", (e: MouseEvent) => {
+    if (e.target instanceof HTMLImageElement) {
+      e.preventDefault();
+    }
+  });
+  
+  
+
   return (
     <section id="about" className="py-20 section-bg">
       <div className="container mx-auto px-4">
@@ -62,6 +70,7 @@ const About = () => {
                     src={profile?.profile_image || profileImage}
                     alt="Profile"
                     className="w-full h-full object-cover"
+                    
                   />
                 </div>
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 hero-gradient rounded-full flex items-center justify-center">
