@@ -13,7 +13,7 @@ import {
 
 const queryClient = new QueryClient();
 
-// Use lazy() for components associated with specific routes
+
 const Index = lazy(() => import("./pages/Index"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const AdminAuth = lazy(() => import("./pages/AdminAuth"));
@@ -22,6 +22,7 @@ const AdminProjects = lazy(() => import("./pages/AdminProjects"));
 const AdminProjectForm = lazy(() => import("./pages/AdminProjectForm"));
 const AdminProfile = lazy(() => import("./pages/AdminProfile"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const AI = lazy(() => import("./pages/AI")); 
 
 const loadingIndicator = (
     <div className="min-h-[50vh] flex items-center justify-center">
@@ -48,6 +49,7 @@ const App = () => (
                   <Route path="/admin/projects/new" element={<AdminProjectForm />} />
                   <Route path="/admin/projects/edit/:id" element={<AdminProjectForm />} />
                   <Route path="/admin/profile" element={<AdminProfile />} />
+                  <Route path="/dev/ai" element={<AI />} /> 
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
