@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      profile_information: {
+        Row: {
+          created_at: string
+          date_naissance: string | null
+          education: string[] | null
+          email: string | null
+          id: number
+          nom: string | null
+          prenoms: string | null
+          projects: string[] | null
+          skills: string[] | null
+          soft_skills: string[] | null
+          summary: string | null
+        }
+        Insert: {
+          created_at?: string
+          date_naissance?: string | null
+          education?: string[] | null
+          email?: string | null
+          id?: number
+          nom?: string | null
+          prenoms?: string | null
+          projects?: string[] | null
+          skills?: string[] | null
+          soft_skills?: string[] | null
+          summary?: string | null
+        }
+        Update: {
+          created_at?: string
+          date_naissance?: string | null
+          education?: string[] | null
+          email?: string | null
+          id?: number
+          nom?: string | null
+          prenoms?: string | null
+          projects?: string[] | null
+          skills?: string[] | null
+          soft_skills?: string[] | null
+          summary?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           about: string | null
@@ -83,6 +125,7 @@ export type Database = {
           github_link: string | null
           id: string
           images: string[]
+          is_under_development: boolean | null
           is_visible: boolean | null
           key_features: string[] | null
           live_demo_link: string | null
@@ -102,6 +145,7 @@ export type Database = {
           github_link?: string | null
           id?: string
           images?: string[]
+          is_under_development?: boolean | null
           is_visible?: boolean | null
           key_features?: string[] | null
           live_demo_link?: string | null
@@ -121,11 +165,48 @@ export type Database = {
           github_link?: string | null
           id?: string
           images?: string[]
+          is_under_development?: boolean | null
           is_visible?: boolean | null
           key_features?: string[] | null
           live_demo_link?: string | null
           technologies?: string[] | null
           title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      skills: {
+        Row: {
+          category: string
+          created_at: string
+          id: string
+          is_visible: boolean
+          logo_url: string | null
+          name: string
+          sort_order: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          id?: string
+          is_visible?: boolean
+          logo_url?: string | null
+          name: string
+          sort_order?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: string
+          is_visible?: boolean
+          logo_url?: string | null
+          name?: string
+          sort_order?: number | null
           updated_at?: string
           user_id?: string
         }
