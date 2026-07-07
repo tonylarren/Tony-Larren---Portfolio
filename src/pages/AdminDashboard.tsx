@@ -3,9 +3,11 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Loader2, Users, FolderOpen, Settings, LogOut, Plus } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
+import { Loader2, Users, FolderOpen, Settings, LogOut, Plus, Globe, ClipboardList } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
+import { useSiteMode } from '@/hooks/useSiteMode';
 
 interface Profile {
   id: string;
@@ -35,6 +37,27 @@ const AdminDashboard = () => {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
   const [loadingData, setLoadingData] = useState(true);
+  const { mode, loading: modeLoading, updating: modeUpdating, updateMode } = useSiteMode();
+
+  const handleModeToggle = async (checked: boolean) => {
+    const next = checked ? 'paste_board' : 'portfolio';
+    const { error } = await updateMode(next);
+    if (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to update site mode',
+        variant: 'destructive',
+      });
+    } else {
+      toast({
+        title: 'Site mode updated',
+        description:
+          next === 'paste_board'
+            ? 'Visitors now see the Paste Board on the home page.'
+            : 'Visitors now see the Portfolio on the home page.',
+      });
+    }
+  };
 
   useEffect(() => {
     if (!loading && !user) {
@@ -172,6 +195,48 @@ const AdminDashboard = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Home Page Mode Toggle */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Globe className="h-5 w-5" />
+              Home Page Mode
+            </CardTitle>
+            <CardDescription>
+              Choose what visitors see on the site's main entry point. This is saved to Supabase
+              and persists across refreshes and deployments.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center justify-between gap-4 rounded-lg border p-4">
+              <div className="flex items-center gap-3">
+                <span
+                  className={`text-sm font-medium ${mode === 'portfolio' ? 'text-primary' : 'text-muted-foreground'}`}
+                >
+                  Portfolio
+                </span>
+                <Switch
+                  checked={mode === 'paste_board'}
+                  onCheckedChange={handleModeToggle}
+                  disabled={modeLoading || modeUpdating}
+                  aria-label="Toggle home page mode"
+                />
+                <span
+                  className={`text-sm font-medium ${mode === 'paste_board' ? 'text-primary' : 'text-muted-foreground'}`}
+                >
+                  Paste Board
+                </span>
+              </div>
+              <Button variant="outline" size="sm" asChild>
+                <a href="/paste" target="_blank" rel="noopener noreferrer">
+                  <ClipboardList className="h-4 w-4 mr-2" />
+                  View Paste Board
+                </a>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

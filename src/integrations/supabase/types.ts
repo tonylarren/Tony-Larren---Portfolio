@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      paste_board: {
+        Row: {
+          article: string
+          contenu: string
+          created_at: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          article?: string
+          contenu?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          article?: string
+          contenu?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          created_at: string
+          home_mode: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          home_mode?: string
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          home_mode?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           about: string | null
