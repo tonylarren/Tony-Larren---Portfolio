@@ -14,7 +14,8 @@ import {
 const queryClient = new QueryClient();
 
 
-const Index = lazy(() => import("./pages/Index"));
+const HomeGate = lazy(() => import("./pages/HomeGate"));
+const PasteBoard = lazy(() => import("./pages/PasteBoard"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const AdminAuth = lazy(() => import("./pages/AdminAuth"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
@@ -41,7 +42,8 @@ const App = () => (
             <BrowserRouter>
               <Suspense fallback={loadingIndicator}>
                 <Routes>
-                  <Route path="/" element={<Index />} />
+                  <Route path="/" element={<HomeGate />} />
+                  <Route path="/paste" element={<PasteBoard />} />
                   <Route path="/project/:id" element={<ProjectDetail />} />
                   <Route path="/admin" element={<AdminAuth />} />
                   <Route path="/admin/dashboard" element={<AdminDashboard />} />

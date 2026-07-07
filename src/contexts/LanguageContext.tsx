@@ -69,6 +69,17 @@ const translations = {
     // Footer
     'footer.rights': 'All rights reserved.',
     'footer.builtWith': 'Built with React & Tailwind CSS',
+
+    // Paste Board
+    'paste.title': 'Paste Board',
+    'paste.subtitle': 'A shared board anyone can view and edit. Your changes are saved automatically.',
+    'paste.article': 'Article',
+    'paste.contenu': 'Contenu',
+    'paste.articlePlaceholder': 'Title or content summary…',
+    'paste.contenuPlaceholder': 'Paste or type the main content here…',
+    'paste.saving': 'Saving…',
+    'paste.saved': 'All changes saved',
+    'paste.saveError': 'Could not save. Retrying…',
   },
   fr: {
     // Navigation
@@ -128,6 +139,17 @@ const translations = {
     // Footer
     'footer.rights': 'Tous droits réservés.',
     'footer.builtWith': 'Créé avec React & Tailwind CSS',
+
+    // Paste Board
+    'paste.title': 'Paste Board',
+    'paste.subtitle': 'Un tableau partagé que tout le monde peut consulter et modifier. Vos changements sont enregistrés automatiquement.',
+    'paste.article': 'Article',
+    'paste.contenu': 'Contenu',
+    'paste.articlePlaceholder': 'Titre ou résumé du contenu…',
+    'paste.contenuPlaceholder': 'Collez ou saisissez le contenu principal ici…',
+    'paste.saving': 'Enregistrement…',
+    'paste.saved': 'Modifications enregistrées',
+    'paste.saveError': 'Échec de l\'enregistrement. Nouvelle tentative…',
   }
 };
 
